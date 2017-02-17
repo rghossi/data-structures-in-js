@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "BABEL_DISABLE_CACHE=1 mocha --compilers js:babel-core/register --recursive"
+    "test": "BABEL_DISABLE_CACHE=1 mocha --compilers js:babel-core/register --recursive",
+    "test:watch": "npm run test -- --watch"
   },
   "babel": {
     "presets": [
