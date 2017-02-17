@@ -8,11 +8,13 @@ export default class Stack {
 	}
 
 	pop() {
-		return -1;
+		return this.stack.pop() || -1;
 	}
 
-	push(integer) {
-		this.stack.push(integer);
+	push(positiveInteger) {
+		if (typeof positiveInteger != 'number') throw new TypeError("Wrong variable type. Expected (non negative) integer.");
+		if (positiveInteger < 0) throw new TypeError("Negative integers are not accepted!");
+		this.stack.push(positiveInteger);
 	}
 
 	displayAll() {

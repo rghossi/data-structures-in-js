@@ -25,7 +25,7 @@ describe ('Stack', function() {
 		})
 
 		it('should return 50', function() {
-			for (let i=0;i<50;i++) {
+			for (let i=1;i<=50;i++) {
 				stack.push(i);
 			}
 			var number = stack.pop();
@@ -39,11 +39,16 @@ describe ('Stack', function() {
 			stack.peek().should.equal(1);
 		})
 
+		it('should throw an error for integers < 0', function() {
+			(() => stack.push(-1)).should.Throw(TypeError);
+			(() => stack.push(-59)).should.Throw(TypeError);
+		})
+
 		it('should throw an error for non-integers', function() {
-			stack.push(-1).should.Throw("Wrong type!");
-			stack.push("lalala").should.Throw("Wrong type!");
-			stack.push([1,2,3]).should.Throw("Wrong type!");
-			stack.push({number: 1}).should.Throw("Wrong type!");
+			(() => stack.push(-1.653)).should.Throw(TypeError);
+			(() => stack.push("lalala")).should.Throw(TypeError);
+			(() => stack.push([1,2,3])).should.Throw(TypeError);
+			(() => stack.push({number: 1})).should.Throw(TypeError);
 		})
 	})
 
