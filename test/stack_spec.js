@@ -23,12 +23,27 @@ describe ('Stack', function() {
 			var number = stack.pop();
 			number.should.equal(-1);
 		})
+
+		it('should return 50', function() {
+			for (let i=0;i<50;i++) {
+				stack.push(i);
+			}
+			var number = stack.pop();
+			number.should.equal(50);
+		})
 	})
 
 	describe ('push', function() {
 		it('should push 1 to stack', function() {
 			stack.push(1);
 			stack.peek().should.equal(1);
+		})
+
+		it('should throw an error for non-integers', function() {
+			stack.push(-1).should.Throw("Wrong type!");
+			stack.push("lalala").should.Throw("Wrong type!");
+			stack.push([1,2,3]).should.Throw("Wrong type!");
+			stack.push({number: 1}).should.Throw("Wrong type!");
 		})
 	})
 
