@@ -11,8 +11,12 @@ export default class Stack {
 		return -1;
 	}
 
-	push() {
-		this.stack.push(1);
+	push(integer) {
+		this.stack.push(integer);
+	}
+
+	displayAll() {
+		return this.stack.reverse().join(" ") || "Empty stack!";
 	}
 
 }
