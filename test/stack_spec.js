@@ -5,7 +5,7 @@ const should = chai.should();
 
 describe ('Stack', function() {
 
-	let stack = new Stack;
+	let stack = new Stack();
 
 	beforeEach(function() {
 		stack = new Stack();
