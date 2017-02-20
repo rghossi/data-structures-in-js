@@ -39,4 +39,26 @@ export default class SinglyLinkedList {
 		}
 	}
 
+	displayAll() {
+		if (this.head.data === -1) return 'Empty list!';
+		let result = '';
+		let n = this.head;
+		while (n.next !== null) {
+			result += n.data + " -> ";
+			n = n.next;
+		}
+		result += n.data;
+		return result;
+	}
+
+	toArray() {
+		if (this.head.data === -1) return [];
+		let arr = [];
+		let n = this.head;
+		while (n) {
+			arr.push(n.data);
+			n = n.next;
+		}
+		return arr;
+	}
 }
