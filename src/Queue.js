@@ -1,3 +1,5 @@
+import { isValid } from './utils';
+
 export default class Queue {
 	constructor() {
 		this.queue = [];
@@ -13,9 +15,8 @@ export default class Queue {
 
 	//Should only accept integers >= 0
 	enqueue(nonNegativeInteger) {
-		if (typeof nonNegativeInteger != 'number') throw new TypeError("Wrong variable type. Expected (non negative) integer.");
-		if (nonNegativeInteger < 0) throw new TypeError("Negative integers are not accepted!");
-		this.queue.push(nonNegativeInteger);
+		if (isValid(nonNegativeInteger))
+			this.queue.push(nonNegativeInteger);
 	}
 
 	displayAll() {
