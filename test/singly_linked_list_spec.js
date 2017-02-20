@@ -1,14 +1,14 @@
 import chai from 'chai';
-import LinkedList from '../src/SinglyLinkedList.js'
+import SinglyLinkedList from '../src/SinglyLinkedList.js'
 
 const should = chai.should();
 
 describe ('Singly Linked List', function() {
 
-	let linkedList = new LinkedList();
+	let linkedList = new SinglyLinkedList();
 
 	beforeEach(function() {
-		linkedList = new LinkedList();
+		linkedList = new SinglyLinkedList();
 	})
 	
 	describe('peek', function() {
