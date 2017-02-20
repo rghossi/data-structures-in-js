@@ -1,3 +1,5 @@
+import { isValid } from './utils';
+
 class Node {
 	constructor(num) {
 		this.data = num;
@@ -15,6 +17,7 @@ export default class SinglyLinkedList {
 	}
 
 	insertFirst(nonNegativeInt) {
+		if (!isValid(nonNegativeInt)) return;
 		const newNode = new Node(nonNegativeInt);
 		if (this.peek() === -1) this.head = newNode;
 		else {
@@ -24,6 +27,7 @@ export default class SinglyLinkedList {
 	}
 
 	insertLast(nonNegativeInt) {
+		if (!isValid(nonNegativeInt)) return;
 		const newNode = new Node(nonNegativeInt);
 		if (this.peek() === -1) this.head = newNode;
 		else {

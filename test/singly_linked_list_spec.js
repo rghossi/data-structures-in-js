@@ -30,6 +30,19 @@ describe ('Singly Linked List', function() {
 			linkedList.insertFirst(5);
 			linkedList.peek().should.equal(5);
 		})
+
+		it('should throw an error for integers < 0', function() {
+			(() => linkedList.insertFirst(-1)).should.Throw(TypeError);
+			(() => linkedList.insertFirst(-59)).should.Throw(TypeError);
+		})
+
+		it('should throw an error for non-integers', function() {
+			(() => linkedList.insertFirst(-1.653)).should.Throw(TypeError);
+			(() => linkedList.insertFirst("lalala")).should.Throw(TypeError);
+			(() => linkedList.insertFirst([1,2,3])).should.Throw(TypeError);
+			(() => linkedList.insertFirst({number: 1})).should.Throw(TypeError);
+		})
+
 	})
 
 	describe('insertLast', function() {
@@ -39,6 +52,61 @@ describe ('Singly Linked List', function() {
 			linkedList.insertLast(5);
 			linkedList.peek().should.equal(4);
 		})
+
+		it('should throw an error for integers < 0', function() {
+			(() => linkedList.insertLast(-1)).should.Throw(TypeError);
+			(() => linkedList.insertLast(-59)).should.Throw(TypeError);
+		})
+
+		it('should throw an error for non-integers', function() {
+			(() => linkedList.insertLast(-1.653)).should.Throw(TypeError);
+			(() => linkedList.insertLast("lalala")).should.Throw(TypeError);
+			(() => linkedList.insertLast([1,2,3])).should.Throw(TypeError);
+			(() => linkedList.insertLast({number: 1})).should.Throw(TypeError);
+		})
+
+	})
+
+	describe('displayAll', function() {
+		it('should display empty list', function() {
+			var result = linkedList.displayAll();
+			result.should.equal("Empty list!");
+		})
+
+		it('should return 1 -> 2 -> 3 -> 4 -> 5', function() {
+			for (let i=1;i<=5;i++)
+				linkedList.insertLast(i);
+			linkedList.displayAll().should.equal('1 -> 2 -> 3 -> 4 -> 5');
+		})
+
+		it('should return 5 -> 4 -> 3 -> 2 -> 1', function() {
+			for (let i=1;i<=5;i++)
+				linkedList.insertFirst(i);
+			linkedList.displayAll().should.equal('5 -> 4 -> 3 -> 2 -> 1');
+		})
 	})
 	
+
+	describe('toArray', function() {
+		it('should return [] for empty list', function() {
+			const arr = linkedList.toArray();
+			Array.isArray(arr).should.be.true;
+			arr.should.eql([]);
+		})
+		it('should return [1, 2, 3, 4, 5]', function() {
+			for (let i=1;i<=5;i++)
+				linkedList.insertLast(i);
+			const arr = linkedList.toArray();
+			Array.isArray(arr).should.be.true;
+			arr.should.eql([1, 2, 3, 4, 5]);
+		})
+
+		it('should return [5, 4, 3, 2, 1]', function() {
+			for (let i=1;i<=5;i++)
+				linkedList.insertFirst(i);
+			const arr = linkedList.toArray();
+			Array.isArray(arr).should.be.true;
+			arr.should.eql([5, 4, 3, 2, 1]);
+		})
+	})	
 });
