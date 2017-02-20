@@ -64,7 +64,6 @@ describe ('Singly Linked List', function() {
 			(() => linkedList.insertLast([1,2,3])).should.Throw(TypeError);
 			(() => linkedList.insertLast({number: 1})).should.Throw(TypeError);
 		})
-
 	})
 
 	describe('displayAll', function() {
@@ -108,5 +107,43 @@ describe ('Singly Linked List', function() {
 			Array.isArray(arr).should.be.true;
 			arr.should.eql([5, 4, 3, 2, 1]);
 		})
-	})	
+	})
+
+	describe('insertAfter', function() {
+		it('should insert 4 after node with value 1', function() {
+			linkedList.insertLast(1);
+			linkedList.insertLast(2);
+			linkedList.insertLast(3);
+			linkedList.toArray().should.eql([1, 2, 3]);
+			linkedList.insertAfter(1, 4);
+			linkedList.toArray().should.eql([1, 4, 2, 3]);
+		})
+
+		it('should insert 4 after node with value 3', function() {
+			linkedList.insertLast(1);
+			linkedList.insertLast(2);
+			linkedList.insertLast(3);
+			linkedList.toArray().should.eql([1, 2, 3]);
+			linkedList.insertAfter(3, 4);
+			linkedList.toArray().should.eql([1, 2, 3, 4]);
+		})
+
+		it('should return -1 when given node is not found', function() {
+			linkedList.insertAfter(2, 1).should.equal(-1);
+			linkedList.insertAfter(0, 1).should.equal(-1);
+			linkedList.insertAfter(1, 1).should.equal(-1);
+		})
+
+		it('should throw an error for integers < 0', function() {
+			(() => linkedList.insertAfter(0, -1)).should.Throw(TypeError);
+			(() => linkedList.insertAfter(-59, 0)).should.Throw(TypeError);
+		})
+
+		it('should throw an error for non-integers', function() {
+			(() => linkedList.insertAfter(0, -1.653)).should.Throw(TypeError);
+			(() => linkedList.insertAfter("lalala", 0)).should.Throw(TypeError);
+			(() => linkedList.insertAfter(0, [1,2,3])).should.Throw(TypeError);
+			(() => linkedList.insertAfter(0, {number: 1})).should.Throw(TypeError);
+		})
+	})
 });
