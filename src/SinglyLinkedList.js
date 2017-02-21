@@ -39,6 +39,19 @@ export default class SinglyLinkedList {
 		}
 	}
 
+	insertAfter(existentNodeValue, element) {
+		if (!isValid(existentNodeValue)) return;
+		if (!isValid(element)) return;
+		const newNode = new Node(element);
+		let temp = this.head;
+		while (temp.data !== existentNodeValue) {
+			temp = temp.next;
+			if (!temp) return -1;
+		}
+		newNode.next = temp.next;
+		temp.next = newNode;
+	}
+
 	displayAll() {
 		if (this.head.data === -1) return 'Empty list!';
 		let result = '';
