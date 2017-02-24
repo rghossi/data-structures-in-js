@@ -26,6 +26,13 @@ export default class SinglyLinkedList {
 		}
 	}
 
+	deleteFirst() {
+		if (this.peek() === -1) return -1;
+		const deletedNode = this.head.data;
+		this.head = this.head.next || new Node(-1);
+		return deletedNode;
+	}
+
 	insertLast(nonNegativeInt) {
 		if (!isValid(nonNegativeInt)) return;
 		const newNode = new Node(nonNegativeInt);
