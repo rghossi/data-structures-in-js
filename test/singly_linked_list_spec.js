@@ -146,4 +146,78 @@ describe ('Singly Linked List', function() {
 			(() => linkedList.insertAfter(0, {number: 1})).should.Throw(TypeError);
 		})
 	})
+
+	describe('deleteFirst', function() {
+		it('should delete first node and return element', function() {
+			linkedList.insertLast(1);
+			linkedList.insertLast(2);
+			linkedList.insertLast(3);
+			linkedList.toArray().should.eql([1, 2, 3]);
+			linkedList.deleteFirst();
+			linkedList.toArray().should.eql([2, 3]);
+			linkedList.deleteFirst();
+			linkedList.toArray().should.eql([3]);
+			linkedList.deleteFirst();
+			linkedList.toArray().should.eql([]);
+		})
+
+		it('should return -1 when list is empty', function() {
+			linkedList.insertLast(1);
+			linkedList.insertLast(2);
+			linkedList.insertLast(3);
+			linkedList.toArray().should.eql([1, 2, 3]);
+			linkedList.deleteFirst().should.equal(1);
+			linkedList.toArray().should.eql([2, 3]);
+			linkedList.deleteFirst().should.equal(2);
+			linkedList.toArray().should.eql([3]);
+			linkedList.deleteFirst().should.equal(3);
+			linkedList.toArray().should.eql([]);
+			linkedList.deleteFirst().should.equal(-1);
+		})
+	})
+
+	describe('deleteLast', function() {
+		it("should delete last node and return it (-1 if it's empty)", function() {
+			linkedList.insertLast(1);
+			linkedList.insertLast(2);
+			linkedList.insertLast(3);
+			linkedList.toArray().should.eql([1, 2, 3]);
+			linkedList.deleteLast().should.equal(3);
+			linkedList.toArray().should.eql([1, 2]);
+			linkedList.deleteLast().should.equal(2);
+			linkedList.toArray().should.eql([1]);
+			linkedList.deleteLast().should.equal(1);
+			linkedList.toArray().should.eql([]);
+			linkedList.deleteLast().should.equal(-1);
+		})
+	})
+
+	describe('deleteNode', function() {
+		it('should delete node 2 and return element', function() {
+			linkedList.insertFirst(1);
+			linkedList.insertFirst(2);
+			linkedList.insertFirst(3);
+			linkedList.toArray().should.eql([3, 2, 1]);
+			linkedList.deleteNode(2).should.equal(2);
+			linkedList.toArray().should.eql([3, 1]);
+		})
+
+		it('should return -1 when given node is not found', function() {
+			linkedList.deleteNode(1).should.equal(-1);
+			linkedList.deleteNode(2).should.equal(-1);
+			linkedList.deleteNode(3).should.equal(-1);
+		})
+
+		it('should throw an error for integers < 0', function() {
+			(() => linkedList.deleteNode(-1)).should.Throw(TypeError);
+			(() => linkedList.deleteNode(-59)).should.Throw(TypeError);
+		})
+
+		it('should throw an error for non-integers', function() {
+			(() => linkedList.deleteNode(-1.653)).should.Throw(TypeError);
+			(() => linkedList.deleteNode("lalala")).should.Throw(TypeError);
+			(() => linkedList.deleteNode([1,2,3])).should.Throw(TypeError);
+			(() => linkedList.deleteNode({number: 1})).should.Throw(TypeError);
+		})
+	})
 });
