@@ -79,6 +79,21 @@ export default class SinglyLinkedList {
 		temp.next = newNode;
 	}
 
+	deleteNode(nodeValueToBeDeleted) {
+		if (!isValid(nodeValueToBeDeleted)) return;
+		if (this.head.next === null && this.head.data !== nodeValueToBeDeleted)
+			return -1;
+		let deletedNode;
+		let temp = this.head;
+		while (temp.next.data !== nodeValueToBeDeleted) {
+			temp = temp.next;
+			if (!temp) return -1;
+		}
+		deletedNode = temp.next.data;
+		temp.next = temp.next.next;
+		return deletedNode;
+	}
+
 	displayAll() {
 		if (this.head.data === -1) return 'Empty list!';
 		let result = '';
