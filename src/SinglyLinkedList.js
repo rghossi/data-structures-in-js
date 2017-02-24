@@ -46,6 +46,26 @@ export default class SinglyLinkedList {
 		}
 	}
 
+	deleteLast() {
+		if (this.peek() === -1) return -1;
+		let n = this.head;
+		let deletedNode = n.data;
+		if (n.next === null) {
+			n.data = -1;
+			return deletedNode;
+		}
+		
+		while(n.next !== null) {
+			if (n.next.next === null) {
+				deletedNode = n.next.data;
+				n.next = null;
+				break;
+			}
+			n = n.next;
+		}
+		return deletedNode;
+	}
+
 	insertAfter(existentNodeValue, element) {
 		if (!isValid(existentNodeValue)) return;
 		if (!isValid(element)) return;
