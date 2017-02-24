@@ -1,4 +1,4 @@
-# data-structures-in-js
+# data-structures-in-js [![Build Status](https://travis-ci.org/rghossi/data-structures-in-js.svg?branch=master)](https://travis-ci.org/rghossi/data-structures-in-js)
 
 `src/` - Data structures implementation
 
